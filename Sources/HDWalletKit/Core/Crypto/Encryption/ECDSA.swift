@@ -52,10 +52,9 @@ public final class ECDSA {
             return false
         };
         
-        if (secp256k1_ecdsa_verify(ctx, &signature, message.bytes, &pubkey) != 1) {
+        if (secp256k1_ecdsa_verify(ctx, &signature, [UInt8](message), &pubkey) != 1) {
             return false
         };
-        secp256k1_context_destroy(ctx);
         return true
     }
 }
